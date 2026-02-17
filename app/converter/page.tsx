@@ -7,13 +7,14 @@ interface Prices {
   [key: string]: number
 }
 
-const CRYPTO_IDS: { [key: string]: string } = {
-  BTC: 'bitcoin',
-  ETH: 'ethereum',
-  SOL: 'solana',
-  ADA: 'cardano',
-  DOT: 'polkadot',
-  MATIC: 'matic-network'
+// Fallback prices in case API fails
+const FALLBACK_PRICES: Prices = {
+  BTC: 96750,
+  ETH: 2650,
+  SOL: 145,
+  ADA: 0.78,
+  DOT: 4.85,
+  MATIC: 0.42
 }
 
 const FIAT_RATES = {
@@ -27,15 +28,9 @@ export default function Converter() {
   const [fromCrypto, setFromCrypto] = useState('BTC')
   const [toFiat, setToFiat] = useState('RON')
   const [result, setResult] = useState(0)
-  const [prices, setPrices] = useState<Prices>({
-    BTC: 96750,
-    ETH: 2650,
-    SOL: 145,
-    ADA: 0.78,
-    DOT: 4.85,
-    MATIC: 0.42
-  })
+  const [prices, setPrices] = useState<Prices>(FALLBACK_PRICES)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
   const [lastUpdate, setLastUpdate] = useState('')
 
   // Fetch real-time prices from CoinGecko
@@ -45,20 +40,28 @@ export default function Converter() {
         const response = await fetch(
           'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,cardano,polkadot,matic-network&vs_currencies=usd'
         )
+        
+        if (!response.ok) {
+          throw new Error('API Error')
+        }
+        
         const data = await response.json()
         
         setPrices({
-          BTC: data.bitcoin.usd,
-          ETH: data.ethereum.usd,
-          SOL: data.solana.usd,
-          ADA: data.cardano.usd,
-          DOT: data.polkadot.usd,
-          MATIC: data['matic-network'].usd
+          BTC: data.bitcoin?.usd || FALLBACK_PRICES.BTC,
+          ETH: data.ethereum?.usd || FALLBACK_PRICES.ETH,
+          SOL: data.solana?.usd || FALLBACK_PRICES.SOL,
+          ADA: data.cardano?.usd || FALLBACK_PRICES.ADA,
+          DOT: data.polkadot?.usd || FALLBACK_PRICES.DOT,
+          MATIC: data['matic-network']?.usd || FALLBACK_PRICES.MATIC
         })
         setLastUpdate(new Date().toLocaleTimeString('ro-RO'))
-        setLoading(false)
-      } catch (error) {
-        console.error('Error fetching prices:', error)
+        setError('')
+      } catch (err) {
+        console.error('Error fetching prices:', err)
+        setError('Prețurile nu s-au putut actualiza. Se folosesc valorile implicite.')
+        setPrices(FALLBACK_PRICES)
+      } finally {
         setLoading(false)
       }
     }
@@ -70,13 +73,14 @@ export default function Converter() {
   }, [])
 
   useEffect(() => {
-    const cryptoPrice = prices[fromCrypto]
-    const fiatRate = FIAT_RATES[toFiat as keyof typeof FIAT_RATES]
+    const cryptoPrice = prices[fromCrypto] || 0
+    const fiatRate = FIAT_RATES[toFiat as keyof typeof FIAT_RATES] || 1
     const converted = parseFloat(amount || '0') * cryptoPrice * fiatRate
     setResult(converted)
   }, [amount, fromCrypto, toFiat, prices])
 
   const formatResult = (value: number, currency: string) => {
+    if (isNaN(value)) return '-'
     if (currency === 'RON') {
       return value.toLocaleString('ro-RO', { style: 'currency', currency: 'RON' })
     } else if (currency === 'EUR') {
@@ -103,6 +107,13 @@ export default function Converter() {
           </div>
         </div>
 
+        {/* Error Message */}
+        {error && (
+          <div className="mb-4 rounded-lg bg-yellow-500/20 border border-yellow-500 p-4 text-yellow-200">
+            {error}
+          </div>
+        )}
+
         {/* Converter Card */}
         <div className="rounded-2xl bg-crypto-card p-6 sm:p-8 border border-gray-800">
           {loading && (
@@ -122,6 +133,8 @@ export default function Converter() {
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 placeholder="1"
+                min="0"
+                step="0.000001"
                 className="w-full rounded-lg bg-crypto-dark border border-gray-700 px-4 py-3 text-white placeholder-gray-500 focus:border-crypto-accent focus:outline-none"
               />
             </div>
@@ -174,13 +187,15 @@ export default function Converter() {
             <p className="text-4xl font-bold text-crypto-green sm:text-5xl">
               {formatResult(result, toFiat)}
             </p>
-            <p className="mt-2 text-sm text-gray-500">
-              1 {fromCrypto} = {formatResult(
-                prices[fromCrypto] * 
-                FIAT_RATES[toFiat as keyof typeof FIAT_RATES], 
-                toFiat
-              )}
-            </p>
+            {prices[fromCrypto] && (
+              <p className="mt-2 text-sm text-gray-500">
+                1 {fromCrypto} = {formatResult(
+                  prices[fromCrypto] * 
+                  (FIAT_RATES[toFiat as keyof typeof FIAT_RATES] || 1), 
+                  toFiat
+                )}
+              </p>
+            )}
           </div>
         </div>
 
@@ -194,7 +209,7 @@ export default function Converter() {
             {Object.entries(prices).map(([crypto, price]) => (
               <div key={crypto} className="flex items-center justify-between rounded-lg bg-crypto-dark p-3 border border-gray-700">
                 <span className="font-semibold text-white">{crypto}</span>
-                <span className="text-crypto-accent">${price.toLocaleString()}</span>
+                <span className="text-crypto-accent">${typeof price === 'number' ? price.toLocaleString() : '-'}</span>
               </div>
             ))}
           </div>        </div>

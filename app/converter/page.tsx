@@ -3,15 +3,17 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-// TODO: Connect to CoinGecko API for real-time prices
-// Current prices: Feb 17, 2025
-const CRYPTO_PRICES = {
-  BTC: 96750,
-  ETH: 2650,
-  SOL: 145,
-  ADA: 0.78,
-  DOT: 4.85,
-  MATIC: 0.42
+interface Prices {
+  [key: string]: number
+}
+
+const CRYPTO_IDS: { [key: string]: string } = {
+  BTC: 'bitcoin',
+  ETH: 'ethereum',
+  SOL: 'solana',
+  ADA: 'cardano',
+  DOT: 'polkadot',
+  MATIC: 'matic-network'
 }
 
 const FIAT_RATES = {
@@ -25,13 +27,54 @@ export default function Converter() {
   const [fromCrypto, setFromCrypto] = useState('BTC')
   const [toFiat, setToFiat] = useState('RON')
   const [result, setResult] = useState(0)
+  const [prices, setPrices] = useState<Prices>({
+    BTC: 96750,
+    ETH: 2650,
+    SOL: 145,
+    ADA: 0.78,
+    DOT: 4.85,
+    MATIC: 0.42
+  })
+  const [loading, setLoading] = useState(true)
+  const [lastUpdate, setLastUpdate] = useState('')
+
+  // Fetch real-time prices from CoinGecko
+  useEffect(() => {
+    const fetchPrices = async () => {
+      try {
+        const response = await fetch(
+          'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,cardano,polkadot,matic-network&vs_currencies=usd'
+        )
+        const data = await response.json()
+        
+        setPrices({
+          BTC: data.bitcoin.usd,
+          ETH: data.ethereum.usd,
+          SOL: data.solana.usd,
+          ADA: data.cardano.usd,
+          DOT: data.polkadot.usd,
+          MATIC: data['matic-network'].usd
+        })
+        setLastUpdate(new Date().toLocaleTimeString('ro-RO'))
+        setLoading(false)
+      } catch (error) {
+        console.error('Error fetching prices:', error)
+        setLoading(false)
+      }
+    }
+
+    fetchPrices()
+    // Refresh every 60 seconds
+    const interval = setInterval(fetchPrices, 60000)
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
-    const cryptoPrice = CRYPTO_PRICES[fromCrypto as keyof typeof CRYPTO_PRICES]
+    const cryptoPrice = prices[fromCrypto]
     const fiatRate = FIAT_RATES[toFiat as keyof typeof FIAT_RATES]
     const converted = parseFloat(amount || '0') * cryptoPrice * fiatRate
     setResult(converted)
-  }, [amount, fromCrypto, toFiat])
+  }, [amount, fromCrypto, toFiat, prices])
 
   const formatResult = (value: number, currency: string) => {
     if (currency === 'RON') {
@@ -50,11 +93,24 @@ export default function Converter() {
           <Link href="/" className="text-2xl font-bold text-crypto-accent hover:opacity-80">
             ← Înapoi
           </Link>
-          <h1 className="text-3xl font-bold text-white">Convertor Crypto</h1>
+          <div className="text-right">
+            <h1 className="text-3xl font-bold text-white">Convertor Crypto</h1>
+            {lastUpdate && (
+              <p className="text-sm text-gray-500">
+                Actualizat: {lastUpdate}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* Converter Card */}
         <div className="rounded-2xl bg-crypto-card p-6 sm:p-8 border border-gray-800">
+          {loading && (
+            <div className="mb-4 text-center text-crypto-accent">
+              Se încarcă prețurile...
+            </div>
+          )}
+          
           <div className="grid gap-6 md:grid-cols-2">
             {/* Amount Input */}
             <div>
@@ -120,7 +176,7 @@ export default function Converter() {
             </p>
             <p className="mt-2 text-sm text-gray-500">
               1 {fromCrypto} = {formatResult(
-                CRYPTO_PRICES[fromCrypto as keyof typeof CRYPTO_PRICES] * 
+                prices[fromCrypto] * 
                 FIAT_RATES[toFiat as keyof typeof FIAT_RATES], 
                 toFiat
               )}
@@ -130,16 +186,18 @@ export default function Converter() {
 
         {/* Quick Rates */}
         <div className="mt-8 rounded-xl bg-crypto-card/50 p-6 border border-gray-800">
-          <h3 className="mb-4 text-lg font-semibold text-white">Rate Curent (USD)</h3>
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-lg font-semibold text-white">Rate Live (USD)</h3>
+            <span className="text-xs text-crypto-accent">Sursă: CoinGecko</span>
+          </div>
           <div className="grid gap-4 sm:grid-cols-3">
-            {Object.entries(CRYPTO_PRICES).map(([crypto, price]) => (
+            {Object.entries(prices).map(([crypto, price]) => (
               <div key={crypto} className="flex items-center justify-between rounded-lg bg-crypto-dark p-3 border border-gray-700">
                 <span className="font-semibold text-white">{crypto}</span>
                 <span className="text-crypto-accent">${price.toLocaleString()}</span>
               </div>
             ))}
-          </div>
-        </div>
+          </div>        </div>
       </div>
     </main>
   )

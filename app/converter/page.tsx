@@ -3,13 +3,15 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
+// TODO: Connect to CoinGecko API for real-time prices
+// Current prices: Feb 17, 2025
 const CRYPTO_PRICES = {
-  BTC: 67230,
-  ETH: 3450,
-  SOL: 148.50,
-  ADA: 0.58,
-  DOT: 7.85,
-  MATIC: 0.72
+  BTC: 96750,
+  ETH: 2650,
+  SOL: 145,
+  ADA: 0.78,
+  DOT: 4.85,
+  MATIC: 0.42
 }
 
 const FIAT_RATES = {

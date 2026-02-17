@@ -21,7 +21,7 @@ const FIAT_RATES = {
 export default function Converter() {
   const [amount, setAmount] = useState('1')
   const [fromCrypto, setFromCrypto] = useState('BTC')
-  const [toFiat, setToFiat] = useState('USD')
+  const [toFiat, setToFiat] = useState('RON')
   const [result, setResult] = useState(0)
 
   useEffect(() => {
@@ -46,9 +46,9 @@ export default function Converter() {
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-crypto-accent hover:opacity-80">
-            ← Back
+            ← Înapoi
           </Link>
-          <h1 className="text-3xl font-bold text-white">Crypto Converter</h1>
+          <h1 className="text-3xl font-bold text-white">Convertor Crypto</h1>
         </div>
 
         {/* Converter Card */}
@@ -57,7 +57,7 @@ export default function Converter() {
             {/* Amount Input */}
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-300">
-                Amount
+                Sumă
               </label>
               <input
                 type="number"
@@ -71,7 +71,7 @@ export default function Converter() {
             {/* From Crypto */}
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-300">
-                From Crypto
+                Din Criptomonedă
               </label>
               <select
                 value={fromCrypto}
@@ -90,7 +90,7 @@ export default function Converter() {
             {/* To Currency */}
             <div className="md:col-span-2">
               <label className="mb-2 block text-sm font-medium text-gray-300">
-                To Currency
+                În Monedă
               </label>
               <div className="flex gap-4">
                 {(['USD', 'EUR', 'RON'] as const).map((currency) => (
@@ -112,7 +112,7 @@ export default function Converter() {
 
           {/* Result */}
           <div className="mt-8 rounded-xl bg-crypto-dark p-6 text-center border border-gray-700">
-            <p className="mb-2 text-sm text-gray-400">Result</p>
+            <p className="mb-2 text-sm text-gray-400">Rezultat</p>
             <p className="text-4xl font-bold text-crypto-green sm:text-5xl">
               {formatResult(result, toFiat)}
             </p>
@@ -128,7 +128,7 @@ export default function Converter() {
 
         {/* Quick Rates */}
         <div className="mt-8 rounded-xl bg-crypto-card/50 p-6 border border-gray-800">
-          <h3 className="mb-4 text-lg font-semibold text-white">Current Rates (USD)</h3>
+          <h3 className="mb-4 text-lg font-semibold text-white">Rate Curent (USD)</h3>
           <div className="grid gap-4 sm:grid-cols-3">
             {Object.entries(CRYPTO_PRICES).map(([crypto, price]) => (
               <div key={crypto} className="flex items-center justify-between rounded-lg bg-crypto-dark p-3 border border-gray-700">

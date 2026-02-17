@@ -36,9 +36,9 @@ export default function PositionCalculator() {
         {/* Header */}
         <div className="mb-8 flex items-center justify-between">
           <Link href="/" className="text-2xl font-bold text-crypto-accent hover:opacity-80">
-            ← Back
+            ← Înapoi
           </Link>
-          <h1 className="text-3xl font-bold text-white">Position Size Calculator</h1>
+          <h1 className="text-3xl font-bold text-white">Calculator Poziție Trading</h1>
         </div>
 
         {/* Calculator Card */}
@@ -46,7 +46,7 @@ export default function PositionCalculator() {
           <div className="grid gap-6 md:grid-cols-2">
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-300">
-                Account Balance (USD)
+                Balanța Contului (USD)
               </label>
               <input
                 type="number"
@@ -62,7 +62,7 @@ export default function PositionCalculator() {
 
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-300">
-                Risk per Trade (%)
+                Risc per Tranzacție (%)
               </label>
               <input
                 type="number"
@@ -78,7 +78,7 @@ export default function PositionCalculator() {
 
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-300">
-                Entry Price ($)
+                Preț Intrare ($)
               </label>
               <input
                 type="number"
@@ -113,24 +113,24 @@ export default function PositionCalculator() {
             onClick={calculatePosition}
             className="mt-6 w-full rounded-lg bg-crypto-accent py-4 font-bold text-crypto-dark transition hover:opacity-90"
           >
-            Calculate Position Size
+            Calculează Mărimea Poziției
           </button>
 
           {/* Results */}
           {positionSize > 0 && (
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               <div className="rounded-xl bg-crypto-dark p-4 text-center border border-gray-700">
-                <p className="text-sm text-gray-400">Risk Amount</p>
+                <p className="text-sm text-gray-400">Sumă Riscată</p>
                 <p className="text-2xl font-bold text-crypto-red">${riskAmount.toFixed(2)}</p>
               </div>
               
               <div className="rounded-xl bg-crypto-dark p-4 text-center border border-gray-700">
-                <p className="text-sm text-gray-400">Position Size</p>
+                <p className="text-sm text-gray-400">Mărime Poziție</p>
                 <p className="text-2xl font-bold text-crypto-accent">${positionSize.toFixed(2)}</p>
               </div>
               
               <div className="rounded-xl bg-crypto-dark p-4 text-center border border-gray-700">
-                <p className="text-sm text-gray-400">Coins to Buy</p>
+                <p className="text-sm text-gray-400">Monede de Cumpărat</p>
                 <p className="text-2xl font-bold text-crypto-green">{coinsToBuy.toFixed(6)}</p>
               </div>
             </div>
@@ -139,13 +139,13 @@ export default function PositionCalculator() {
 
         {/* Info */}
         <div className="mt-8 rounded-xl bg-crypto-card/50 p-6 border border-gray-800">
-          <h3 className="mb-4 text-lg font-semibold text-white">How it works</h3>
+          <h3 className="mb-4 text-lg font-semibold text-white">Cum funcționează</h3>
           <ul className="list-inside list-disc space-y-2 text-gray-400">
-            <li>Enter your total account balance</li>
-            <li>Set the percentage you're willing to risk per trade (1-3% recommended)</li>
-            <li>Enter your planned entry price</li>
-            <li>Set your stop loss price</li>
-            <li>Get the optimal position size to limit your risk</li>
+            <li>Introdu balanța totală a contului</li>
+            <li>Setează procentul pe care ești dispus să-l riști (1-3% recomandat)</li>
+            <li>Introdu prețul de intrare planificat</li>
+            <li>Setează prețul stop loss</li>
+            <li>Obții mărimea optimă a poziției pentru a limita riscul</li>
           </ul>
         </div>
       </div>

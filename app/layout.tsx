@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'CriptoCalculator - Free Crypto Trading Tools',
-  description: 'Free cryptocurrency calculators for traders. Position size calculator, crypto converter, P&L tracker. Calculate your crypto trades like a pro.',
-  keywords: 'crypto calculator, trading calculator, position size, bitcoin converter, crypto tools, trading risk calculator, cripto calculator',
+  title: 'CriptoCalculator - Calculator Crypto Gratuite',
+  description: 'Calculator criptomonede gratuit pentru traderi. Calculator poziție trading, convertor crypto, tracker P&L. Calculează tranzacțiile ca un profesionist.',
+  keywords: 'criptocalculator, calculator crypto, calculator poziție, convertor bitcoin, unelte crypto, calculator trading, crypto calculator romania',
   openGraph: {
-    title: 'CriptoCalculator - Free Crypto Trading Tools',
-    description: 'Free cryptocurrency calculators for traders',
+    title: 'CriptoCalculator - Calculator Crypto Gratuite',
+    description: 'Calculator criptomonede gratuit pentru traderi',
     type: 'website',
   },
 }
@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="ro">
       <body className="min-h-screen bg-crypto-dark text-white antialiased">
         {children}
       </body>

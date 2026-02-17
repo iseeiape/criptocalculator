@@ -12,8 +12,8 @@ export default function Home() {
             CriptoCalculator
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-xl text-gray-300">
-            Free cryptocurrency calculators and trading tools. 
-            Calculate position sizes, convert crypto, and track profits like a pro.
+            Calculatoare criptomonede gratuite pentru traderi. 
+            Calculează mărimea poziției, convertește crypto și urmărește profitul ca un profesionist.
           </p>
           
           <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -21,13 +21,13 @@ export default function Home() {
               href="#calculator"
               className="rounded-lg bg-crypto-accent px-8 py-4 font-semibold text-crypto-dark transition hover:scale-105 hover:bg-crypto-accent/90"
             >
-              Start Calculating
+              Începe Calculul
             </Link>
             <Link
               href="#converter"
               className="rounded-lg border-2 border-crypto-purple px-8 py-4 font-semibold text-white transition hover:scale-105 hover:bg-crypto-purple/20"
             >
-              Convert Crypto
+              Convertește Crypto
             </Link>
           </div>
         </div>
@@ -37,7 +37,7 @@ export default function Home() {
       <section id="tools" className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <h2 className="mb-12 text-center text-3xl font-bold text-white sm:text-4xl">
-            Free Crypto Tools
+            Unelte Crypto Gratuite
           </h2>
           
           <div className="grid gap-8 md:grid-cols-2">
@@ -48,11 +48,11 @@ export default function Home() {
                   📊
                 </div>
                 <h3 className="mb-2 text-2xl font-bold text-white group-hover:text-crypto-accent">
-                  Position Size Calculator
+                  Calculator Poziție Trading
                 </h3>
                 <p className="text-gray-400">
-                  Calculate the perfect position size based on your risk tolerance. 
-                  Never risk more than you should.
+                  Calculează mărimea perfectă a poziției bazată pe toleranța ta la risc. 
+                  Nu riști niciodată mai mult decât trebuie.
                 </p>
               </div>
             </Link>
@@ -64,11 +64,11 @@ export default function Home() {
                   💱
                 </div>
                 <h3 className="mb-2 text-2xl font-bold text-white group-hover:text-crypto-purple">
-                  Crypto Converter
+                  Convertor Crypto
                 </h3>
                 <p className="text-gray-400">
-                  Convert Bitcoin, Ethereum, Solana to RON, USD, EUR. 
-                  Real-time exchange rates.
+                  Convertește Bitcoin, Ethereum, Solana în RON, USD, EUR. 
+                  Rate de schimb în timp real.
                 </p>
               </div>
             </Link>
@@ -82,18 +82,18 @@ export default function Home() {
           <div className="grid gap-8 sm:grid-cols-3">
             <div className="text-center">
               <div className="mb-4 text-4xl">⚡</div>
-              <h4 className="mb-2 text-lg font-semibold">Instant Calculations</h4>
-              <p className="text-gray-400">Real-time results as you type</p>
+              <h4 className="mb-2 text-lg font-semibold">Calcule Instant</h4>
+              <p className="text-gray-400">Rezultate în timp real pe măsură ce tastezi</p>
             </div>
             <div className="text-center">
               <div className="mb-4 text-4xl">🔒</div>
-              <h4 className="mb-2 text-lg font-semibold">100% Private</h4>
-              <p className="text-gray-400">No data stored, calculations in browser</p>
+              <h4 className="mb-2 text-lg font-semibold">100% Privat</h4>
+              <p className="text-gray-400">Nicio dată stocată, calcule în browser</p>
             </div>
             <div className="text-center">
               <div className="mb-4 text-4xl">💯</div>
-              <h4 className="mb-2 text-lg font-semibold">Free Forever</h4>
-              <p className="text-gray-400">No signup, no credit card required</p>
+              <h4 className="mb-2 text-lg font-semibold">Gratis pentru Totdeauna</h4>
+              <p className="text-gray-400">Fără înregistrare, fără card de credit</p>
             </div>
           </div>
         </div>
@@ -102,9 +102,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-gray-800 px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center text-gray-500">
-          <p>© 2025 CriptoCalculator. Free crypto tools for traders.</p>
+          <p>© 2025 CriptoCalculator. Unelte crypto gratuite pentru traderi.</p>
           <p className="mt-2 text-sm">
-            Not financial advice. Trade responsibly.
+            Nu este sfat financiar. Tranzacționează responsabil.
           </p>
         </div>
       </footer>

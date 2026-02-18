@@ -49,6 +49,45 @@ export default function ANAFCalculator() {
     setTransactions(transactions.filter(t => t.id !== id))
   }
 
+  // Load example data
+  const loadExample = () => {
+    const exampleTransactions: Transaction[] = [
+      {
+        id: 'example-1',
+        type: 'buy',
+        crypto: 'BTC',
+        amount: 0.5,
+        price: 200000,
+        date: '2024-01-15'
+      },
+      {
+        id: 'example-2',
+        type: 'buy',
+        crypto: 'BTC',
+        amount: 0.3,
+        price: 250000,
+        date: '2024-03-20'
+      },
+      {
+        id: 'example-3',
+        type: 'sell',
+        crypto: 'BTC',
+        amount: 0.4,
+        price: 350000,
+        date: '2024-06-10'
+      },
+      {
+        id: 'example-4',
+        type: 'sell',
+        crypto: 'BTC',
+        amount: 0.3,
+        price: 400000,
+        date: '2024-09-15'
+      }
+    ]
+    setTransactions(exampleTransactions)
+  }
+
   // Calculate taxes
   useEffect(() => {
     let profit = 0
@@ -139,7 +178,15 @@ export default function ANAFCalculator() {
           <div className="space-y-6">
             {/* Add Transaction */}
             <div className="rounded-2xl bg-crypto-card p-6 border border-gray-800">
-              <h2 className="mb-4 text-xl font-bold text-white">Adaugă Tranzacție</h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold text-white">Adaugă Tranzacție</h2>
+                <button
+                  onClick={loadExample}
+                  className="text-sm text-crypto-accent hover:underline"
+                >
+                  Încarcă Exemplu ↓
+                </button>
+              </div>
               
               <div className="grid gap-4">
                 {/* Type */}

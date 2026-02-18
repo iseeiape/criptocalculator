@@ -118,7 +118,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-gray-800 px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl text-center text-gray-500">
-          <p>© 2025 CriptoCalculator. Unelte crypto gratuite pentru traderi.</p>
+          <p>© 2026 CriptoCalculator. Unelte crypto gratuite pentru traderi.</p>
           <p className="mt-2 text-sm">
             Nu este sfat financiar. Tranzacționează responsabil.
           </p>

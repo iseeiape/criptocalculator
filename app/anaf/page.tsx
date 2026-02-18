@@ -169,7 +169,7 @@ export default function ANAFCalculator() {
           </Link>
           <div className="text-right">
             <h1 className="text-3xl font-bold text-white">Calculator Taxe ANAF</h1>
-            <p className="text-sm text-gray-500">Crypto 2025 - Metoda FIFO</p>
+            <p className="text-sm text-gray-500">Crypto 2026 - Metoda FIFO</p>
           </div>
         </div>
 
@@ -374,7 +374,7 @@ export default function ANAFCalculator() {
 
             {/* Info */}
             <div className="rounded-2xl bg-crypto-card/50 p-6 border border-gray-800">
-              <h3 className="mb-4 text-lg font-semibold text-white">Informații ANAF 2025</h3>
+              <h3 className="mb-4 text-lg font-semibold text-white">Informații ANAF 2026</h3>
               
               <div className="space-y-3 text-sm text-gray-400">
                 <p>
@@ -394,7 +394,7 @@ export default function ANAFCalculator() {
                 </p>
                 
                 <p>
-                  <span className="text-crypto-accent font-semibold">Termen plată:</span> 25 mai 2026 pentru declarația unică pe veniturile din 2025.
+                  <span className="text-crypto-accent font-semibold">Termen plată:</span> 25 mai 2027 pentru declarația unică pe veniturile din 2026.
                 </p>
                 
                 <p className="text-xs text-gray-500 pt-2 border-t border-gray-700 mt-4">

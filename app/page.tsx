@@ -40,10 +40,10 @@ export default function Home() {
             Unelte Crypto Gratuite
           </h2>
           
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {/* Position Size Calculator Card */}
             <Link href="/position-calculator" className="group">
-              <div className="rounded-2xl bg-crypto-card p-8 transition hover:scale-[1.02] hover:border-crypto-accent border border-gray-800">
+              <div className="rounded-2xl bg-crypto-card p-8 transition hover:scale-[1.02] hover:border-crypto-accent border border-gray-800 h-full">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-crypto-accent/20 text-3xl">
                   📊
                 </div>
@@ -59,7 +59,7 @@ export default function Home() {
 
             {/* Crypto Converter Card */}
             <Link href="/converter" className="group">
-              <div className="rounded-2xl bg-crypto-card p-8 transition hover:scale-[1.02] hover:border-crypto-purple border border-gray-800">
+              <div className="rounded-2xl bg-crypto-card p-8 transition hover:scale-[1.02] hover:border-crypto-purple border border-gray-800 h-full">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-crypto-purple/20 text-3xl">
                   💱
                 </div>
@@ -69,6 +69,22 @@ export default function Home() {
                 <p className="text-gray-400">
                   Convertește Bitcoin, Ethereum, Solana în RON, USD, EUR. 
                   Rate de schimb în timp real.
+                </p>
+              </div>
+            </Link>
+
+            {/* ANAF Tax Calculator Card */}
+            <Link href="/anaf" className="group">
+              <div className="rounded-2xl bg-crypto-card p-8 transition hover:scale-[1.02] hover:border-crypto-green border border-gray-800 h-full">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-crypto-green/20 text-3xl">
+                  🏛️
+                </div>
+                <h3 className="mb-2 text-2xl font-bold text-white group-hover:text-crypto-green">
+                  Calculator Taxe ANAF
+                </h3>
+                <p className="text-gray-400">
+                  Calculează taxele pentru criptomonede conform ANAF 2025. 
+                  Metoda FIFO, impozit 10%, CASS. Panică la taxe? Noi te ajutăm!
                 </p>
               </div>
             </Link>

@@ -83,8 +83,24 @@ export default function Home() {
                   Calculator Taxe ANAF
                 </h3>
                 <p className="text-gray-400">
-                  Calculează taxele pentru criptomonede conform ANAF 2025. 
+                  Calculează taxele pentru criptomonede conform ANAF 2026. 
                   Metoda FIFO, impozit 10%, CASS. Panică la taxe? Noi te ajutăm!
+                </p>
+              </div>
+            </Link>
+
+            {/* Blog/Resources Card */}
+            <Link href="/blog" className="group">
+              <div className="rounded-2xl bg-crypto-card p-8 transition hover:scale-[1.02] hover:border-crypto-green border border-gray-800 h-full">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-crypto-green/20 text-3xl">
+                  📚
+                </div>
+                <h3 className="mb-2 text-2xl font-bold text-white group-hover:text-crypto-green">
+                  Ghiduri & Articole
+                </h3>
+                <p className="text-gray-400">
+                  Articole educative despre taxe crypto și reglementări ANAF.
+                  Învață cum să fii compliant și profitabil.
                 </p>
               </div>
             </Link>

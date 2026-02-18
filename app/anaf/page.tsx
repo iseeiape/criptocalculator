@@ -313,7 +313,7 @@ export default function ANAFCalculator() {
                   <div>
                     <span className="text-gray-300">CASS (10%)</span>
                     <p className="text-xs text-gray-500">Contribuție asigurări sănătate</p>
-                    <p className="text-xs text-gray-600">Se aplică dacă profitul > 12.000 RON</p>
+                    <p className="text-xs text-gray-600">Se aplică dacă profitul &gt; 12.000 RON</p>
                   </div>
                   <span className="text-xl font-bold text-crypto-purple">{formatRON(healthTax)}</span>
                 </div>

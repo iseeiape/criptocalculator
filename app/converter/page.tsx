@@ -7,7 +7,6 @@ interface Prices {
   [key: string]: number
 }
 
-// Fallback prices in case API fails
 const FALLBACK_PRICES: Prices = {
   BTC: 96750,
   ETH: 2650,
@@ -33,7 +32,6 @@ export default function Converter() {
   const [error, setError] = useState('')
   const [lastUpdate, setLastUpdate] = useState('')
 
-  // Fetch real-time prices from CoinGecko
   useEffect(() => {
     const fetchPrices = async () => {
       try {
@@ -41,9 +39,7 @@ export default function Converter() {
           'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,cardano,polkadot,matic-network&vs_currencies=usd'
         )
         
-        if (!response.ok) {
-          throw new Error('API Error')
-        }
+        if (!response.ok) throw new Error('API Error')
         
         const data = await response.json()
         
@@ -58,7 +54,6 @@ export default function Converter() {
         setLastUpdate(new Date().toLocaleTimeString('ro-RO'))
         setError('')
       } catch (err) {
-        console.error('Error fetching prices:', err)
         setError('Prețurile nu s-au putut actualiza. Se folosesc valorile implicite.')
         setPrices(FALLBACK_PRICES)
       } finally {
@@ -67,7 +62,6 @@ export default function Converter() {
     }
 
     fetchPrices()
-    // Refresh every 60 seconds
     const interval = setInterval(fetchPrices, 60000)
     return () => clearInterval(interval)
   }, [])
@@ -89,131 +83,171 @@ export default function Converter() {
     return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
   }
 
+  const cryptoIcons: { [key: string]: string } = {
+    BTC: '₿', ETH: 'Ξ', SOL: '◎', ADA: '₳', DOT: '●', MATIC: 'M'
+  }
+
   return (
-    <main className="min-h-screen bg-crypto-dark px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-4xl">
-        {/* Header */}
-        <div className="mb-8 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-crypto-accent hover:opacity-80">
-            ← Înapoi
-          </Link>
-          <div className="text-right">
-            <h1 className="text-3xl font-bold text-white">Convertor Crypto</h1>
-            {lastUpdate && (
-              <p className="text-sm text-gray-500">
-                Actualizat: {lastUpdate}
-              </p>
-            )}
+    <main className="relative min-h-screen overflow-hidden">
+      <div className="noise" />
+
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="orb orb-purple w-96 h-96 -top-20 -left-20 animate-float" />
+        <div className="orb orb-cyan w-80 h-80 top-1/2 -right-20 animate-float-delayed" />
+      </div>
+
+      <nav className="relative z-10 glass-strong sticky top-0 border-b border-white/5">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-crypto-accent to-crypto-purple text-xl shadow-glow-cyan">🧮</div>
+              <span className="text-xl font-bold text-gradient">CriptoCalculator</span>
+            </Link>
+            <Link href="/" className="text-sm text-gray-400 hover:text-white transition">← Înapoi la unelte</Link>
           </div>
         </div>
+      </nav>
 
-        {/* Error Message */}
-        {error && (
-          <div className="mb-4 rounded-lg bg-yellow-500/20 border border-yellow-500 p-4 text-yellow-200">
-            {error}
+      <section className="relative px-4 pt-12 pb-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-crypto-purple/30 bg-crypto-purple/10 px-4 py-1.5 mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-crypto-green opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-crypto-green"></span>
+            </span>
+            <span className="text-sm text-crypto-green font-medium">Rate în timp real</span>
           </div>
-        )}
 
-        {/* Converter Card */}
-        <div className="rounded-2xl bg-crypto-card p-6 sm:p-8 border border-gray-800">
-          {loading && (
-            <div className="mb-4 text-center text-crypto-accent">
-              Se încarcă prețurile...
+          <h1 className="text-4xl font-bold text-white sm:text-5xl">
+            Convertor <span className="text-gradient">Crypto</span>
+          </h1>
+          
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-400">
+            Convertește Bitcoin, Ethereum și alte criptomonede în RON, USD sau EUR. 
+            Rate actualizate live de la CoinGecko.
+          </p>
+          {lastUpdate && (
+            <p className="mt-2 text-sm text-gray-500">Ultima actualizare: {lastUpdate}</p>
+          )}
+        </div>
+      </section>
+
+      <section className="relative px-4 py-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          {error && (
+            <div className="mb-6 rounded-xl bg-yellow-500/10 border border-yellow-500/30 p-4 text-yellow-200 text-center">
+              ⚠️ {error}
             </div>
           )}
-          
-          <div className="grid gap-6 md:grid-cols-2">
-            {/* Amount Input */}
-            <div>
-              <label className="mb-2 block text-sm font-medium text-gray-300">
-                Sumă
-              </label>
-              <input
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                placeholder="1"
-                min="0"
-                step="0.000001"
-                className="w-full rounded-lg bg-crypto-dark border border-gray-700 px-4 py-3 text-white placeholder-gray-500 focus:border-crypto-accent focus:outline-none"
-              />
+
+          <div className="glass border-gradient rounded-2xl p-8">
+            {loading && (
+              <div className="mb-6 text-center">
+                <div className="inline-flex items-center gap-2 text-crypto-accent">
+                  <span className="animate-spin">⟳</span> Se încarcă prețurile...
+                </div>
+              </div>
+            )}
+            
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-300">Sumă</label>
+                <input
+                  type="number"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                  placeholder="1"
+                  min="0"
+                  step="0.000001"
+                  className="w-full rounded-xl bg-crypto-dark/80 border border-gray-700 px-4 py-4 text-white placeholder-gray-500 focus:border-crypto-accent focus:outline-none transition text-lg"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-300">Din Criptomonedă</label>
+                <select
+                  value={fromCrypto}
+                  onChange={(e) => setFromCrypto(e.target.value)}
+                  className="w-full rounded-xl bg-crypto-dark/80 border border-gray-700 px-4 py-4 text-white focus:border-crypto-accent focus:outline-none transition"
+                >
+                  {Object.keys(prices).map((crypto) => (
+                    <option key={crypto} value={crypto}>
+                      {cryptoIcons[crypto]} {crypto === 'BTC' ? 'Bitcoin' : crypto === 'ETH' ? 'Ethereum' : crypto === 'SOL' ? 'Solana' : crypto === 'ADA' ? 'Cardano' : crypto === 'DOT' ? 'Polkadot' : 'Polygon'} ({crypto})
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
-            {/* From Crypto */}
-            <div>
-              <label className="mb-2 block text-sm font-medium text-gray-300">
-                Din Criptomonedă
-              </label>
-              <select
-                value={fromCrypto}
-                onChange={(e) => setFromCrypto(e.target.value)}
-                className="w-full rounded-lg bg-crypto-dark border border-gray-700 px-4 py-3 text-white focus:border-crypto-accent focus:outline-none"
-              >
-                <option value="BTC">Bitcoin (BTC)</option>
-                <option value="ETH">Ethereum (ETH)</option>
-                <option value="SOL">Solana (SOL)</option>
-                <option value="ADA">Cardano (ADA)</option>
-                <option value="DOT">Polkadot (DOT)</option>
-                <option value="MATIC">Polygon (MATIC)</option>
-              </select>
-            </div>
-
-            {/* To Currency */}
-            <div className="md:col-span-2">
-              <label className="mb-2 block text-sm font-medium text-gray-300">
-                În Monedă
-              </label>
-              <div className="flex gap-4">
-                {(['USD', 'EUR', 'RON'] as const).map((currency) => (
+            <div className="mt-6">
+              <label className="block text-sm font-medium text-gray-300 mb-3">În Monedă</label>
+              <div className="flex gap-3">
+                {(['RON', 'USD', 'EUR'] as const).map((currency) => (
                   <button
                     key={currency}
                     onClick={() => setToFiat(currency)}
-                    className={`flex-1 rounded-lg py-3 font-semibold transition ${
+                    className={`flex-1 rounded-xl py-4 font-semibold transition flex items-center justify-center gap-2 ${
                       toFiat === currency
                         ? 'bg-crypto-accent text-crypto-dark'
-                        : 'bg-crypto-dark border border-gray-700 text-white hover:border-crypto-accent'
+                        : 'bg-crypto-dark/80 border border-gray-700 text-white hover:border-crypto-accent'
                     }`}
                   >
+                    <span className="text-xl">{currency === 'RON' ? '🇷🇴' : currency === 'USD' ? '🇺🇸' : '🇪🇺'}</span>
                     {currency}
                   </button>
                 ))}
               </div>
             </div>
+
+            <div className="mt-8 glass-strong rounded-2xl p-8 text-center border border-crypto-green/20">
+              <p className="text-sm text-gray-400 mb-2">Rezultat</p>
+              <p className="text-5xl sm:text-6xl font-bold text-crypto-green">
+                {formatResult(result, toFiat)}
+              </p>
+              {prices[fromCrypto] && (
+                <p className="mt-3 text-sm text-gray-500">
+                  1 {fromCrypto} = {formatResult(
+                    prices[fromCrypto] * (FIAT_RATES[toFiat as keyof typeof FIAT_RATES] || 1), 
+                    toFiat
+                  )}
+                </p>
+              )}
+            </div>
           </div>
 
-          {/* Result */}
-          <div className="mt-8 rounded-xl bg-crypto-dark p-6 text-center border border-gray-700">
-            <p className="mb-2 text-sm text-gray-400">Rezultat</p>
-            <p className="text-4xl font-bold text-crypto-green sm:text-5xl">
-              {formatResult(result, toFiat)}
-            </p>
-            {prices[fromCrypto] && (
-              <p className="mt-2 text-sm text-gray-500">
-                1 {fromCrypto} = {formatResult(
-                  prices[fromCrypto] * 
-                  (FIAT_RATES[toFiat as keyof typeof FIAT_RATES] || 1), 
-                  toFiat
-                )}
-              </p>
-            )}
+          {/* Live Rates */}
+          <div className="mt-8 glass rounded-2xl p-8 border border-white/5">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <span>📊</span> Rate Live (USD)
+              </h3>
+              <span className="text-xs text-crypto-accent bg-crypto-accent/10 px-3 py-1 rounded-full">Sursă: CoinGecko</span>
+            </div>
+            
+            <div className="grid gap-4 sm:grid-cols-3">
+              {Object.entries(prices).map(([crypto, price]) => (
+                <div key={crypto} className="glass rounded-xl p-4 flex items-center justify-between border border-gray-700/50 hover:border-crypto-accent/30 transition">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{cryptoIcons[crypto]}</span>
+                    <span className="font-bold text-white">{crypto}</span>
+                  </div>
+                  <span className="text-crypto-accent font-mono">${typeof price === 'number' ? price.toLocaleString() : '-'}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Quick Rates */}
-        <div className="mt-8 rounded-xl bg-crypto-card/50 p-6 border border-gray-800">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-white">Rate Live (USD)</h3>
-            <span className="text-xs text-crypto-accent">Sursă: CoinGecko</span>
+      <footer className="relative border-t border-white/5 px-4 py-12 sm:px-6 lg:px-8 mt-12">
+        <div className="mx-auto max-w-7xl text-center">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="text-2xl">🧮</span>
+            <span className="font-bold text-gradient">CriptoCalculator</span>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {Object.entries(prices).map(([crypto, price]) => (
-              <div key={crypto} className="flex items-center justify-between rounded-lg bg-crypto-dark p-3 border border-gray-700">
-                <span className="font-semibold text-white">{crypto}</span>
-                <span className="text-crypto-accent">${typeof price === 'number' ? price.toLocaleString() : '-'}</span>
-              </div>
-            ))}
-          </div>        </div>
-      </div>
+          <p className="text-sm text-gray-500">Rate actualizate în timp real. Prețurile pot varia.</p>
+        </div>
+      </footer>
     </main>
   )
 }

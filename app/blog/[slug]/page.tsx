@@ -3,11 +3,231 @@ import Link from 'next/link'
 export function generateStaticParams() {
   return [
     { slug: 'cum-declar-crypto-anaf-2026' },
-    { slug: 'metoda-fifo-calcul-profit-crypto-2026' }
+    { slug: 'metoda-fifo-calcul-profit-crypto-2026' },
+    { slug: '2026-02-21-cum-platesc-taxe-bitcoin-crypto-romania-ghid-2026' }
   ]
 }
 
 const blogPosts: { [key: string]: any } = {
+  '2026-02-21-cum-platesc-taxe-bitcoin-crypto-romania-ghid-2026': {
+    title: 'Cum Plătești Taxele pe Bitcoin și Criptomonede în România: Ghid Complet 2026',
+    description: 'Ghid practic despre cum plătești taxele crypto în România. Metode de plată ANAF, termene-limită, penalități și calcule concrete.',
+    date: '21 Februarie 2026',
+    readTime: '20 minute',
+    author: 'CriptoCalculator Team',
+    tags: ['cum platesc taxe', 'taxe crypto', 'ANAF', 'impozit bitcoin', 'penalitati'],
+    content: `
+<div class="prose-custom">
+  <div class="glass-strong rounded-2xl p-8 mb-10 border-l-4 border-crypto-accent">
+    <p class="text-lg text-gray-300 leading-relaxed mb-4">
+      Ai realizat profit din Bitcoin, Ethereum sau alte criptomonede și acum te întrebi cum plătești taxele? 
+      Mulți români știu că trebuie să declare veniturile crypto, dar puțini știu <strong class="text-white">exact cum se face plata efectivă</strong>.
+    </p>
+    <div class="flex items-center gap-2 text-crypto-red">
+      <span>⚠️</span>
+      <span class="font-medium">Termenul-limită pentru 2026: 25 mai 2027!</span>
+    </div>
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-4 mb-12">
+    <a href="/anaf/" class="btn-primary rounded-xl px-6 py-4 font-semibold text-crypto-dark text-center flex items-center justify-center gap-2">
+      <span>🧮</span> Calculează Taxele Instant
+    </a>
+  </div>
+
+  <h2 class="text-2xl font-bold text-white mt-12 mb-6 flex items-center gap-3">
+    <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-crypto-accent/20 text-xl">📊</span>
+    Cât Impozit Plătești pe Profitul Crypto în 2026
+  </h2>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-10">
+    <div class="glass rounded-xl p-6 border border-crypto-accent/20">
+      <div class="text-3xl font-bold text-crypto-accent mb-2">10%</div>
+      <div class="text-sm text-gray-400 mb-3">Impozit pe Venit</div>
+      <p class="text-gray-400 text-sm">Aplicat întotdeauna pe profitul realizat din tranzacții crypto.</p>
+    </div>
+    <div class="glass rounded-xl p-6 border border-crypto-green/20">
+      <div class="text-3xl font-bold text-crypto-green mb-2">10%</div>
+      <div class="text-sm text-gray-400 mb-3">CASS (opțional)</div>
+      <p class="text-gray-400 text-sm">Doar dacă profitul depășește 12.000 RON/an.</p>
+    </div>
+  </div>
+
+  <h3 class="text-xl font-bold text-white mb-4">Exemplu: Profit Peste 12.000 RON</h3>
+  
+  <div class="glass rounded-xl p-6 mb-8">
+    <div class="space-y-3">
+      <div class="flex justify-between items-center py-2 border-b border-white/5">
+        <span class="text-gray-400">Profit total realizat</span>
+        <span class="text-white font-mono">25.500 RON</span>
+      </div>
+      <div class="flex justify-between items-center py-2 border-b border-crypto-accent/30">
+        <span class="text-crypto-accent">Impozit 10%</span>
+        <span class="text-crypto-accent font-mono">2.550 RON</span>
+      </div>
+      <div class="flex justify-between items-center py-2 border-b border-crypto-green/30">
+        <span class="text-crypto-green">CASS 10%</span>
+        <span class="text-crypto-green font-mono">2.550 RON</span>
+      </div>
+      <div class="flex justify-between items-center py-3 bg-crypto-red/10 rounded-lg px-4 mt-2">
+        <span class="text-white font-semibold">TOTAL DE PLATĂ</span>
+        <span class="text-crypto-red font-mono font-bold text-lg">5.100 RON</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="glass rounded-xl p-6 mb-8 border border-crypto-accent/20">
+    <h4 class="text-lg font-semibold text-white mb-4">💡 Observație Importantă</h4>
+    <p class="text-gray-300">CASS se aplică pe <strong>întreg profitul</strong>, nu doar pe suma care depășește 12.000 RON! De la 12.000 RON în sus, plătești efectiv 20% taxe totale.</p>
+  </div>
+
+  <h2 class="text-2xl font-bold text-white mt-12 mb-6 flex items-center gap-3">
+    <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-crypto-purple/20 text-xl">🏦</span>
+    Metode de Plată a Taxelor Crypto la ANAF
+  </h2>
+
+  <div class="space-y-6 mb-10">
+    <div class="glass rounded-xl p-6 border border-crypto-accent/20">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-crypto-accent/20 text-2xl">⭐</div>
+        <h3 class="text-lg font-semibold text-white">1. Plată Online prin SPV (Recomandată)</h3>
+      </div>
+      <p class="text-gray-400 text-sm mb-4">Cea mai rapidă metodă. Intră în SPV, navighează la "Obligații de plată", selectează metoda (card sau internet banking) și confirmă.</p>
+      <div class="flex flex-wrap gap-2 text-xs">
+        <span class="px-2 py-1 bg-crypto-green/20 text-crypto-green rounded">✓ Procesare instantă</span>
+        <span class="px-2 py-1 bg-crypto-green/20 text-crypto-green rounded">✓ Fără comisioane</span>
+        <span class="px-2 py-1 bg-crypto-green/20 text-crypto-green rounded">✓ 24/7</span>
+      </div>
+    </div>
+
+    <div class="glass rounded-xl p-6 border border-crypto-purple/20">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-crypto-purple/20 text-2xl">🏦</div>
+        <h3 class="text-lg font-semibold text-white">2. Transfer Bancar Direct</h3>
+      </div>
+      <p class="text-gray-400 text-sm mb-4">Transfer către contul Trezoreriei din județul tău. Verifică IBAN-ul pe anaf.ro — fiecare județ are cod diferit.</p>
+      <div class="bg-crypto-dark/50 rounded-lg p-4 font-mono text-xs text-gray-400">
+        <div>Beneficiar: ANAF - Trezoreria [Orașul]</div>
+        <div>IBAN: ROXX TREZ [cod județ]</div>
+        <div>Cod bugetar: 620</div>
+        <div>Detalii: Impozit venit 2026, CNP [tău]</div>
+      </div>
+    </div>
+
+    <div class="glass rounded-xl p-6 border border-crypto-green/20">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-crypto-green/20 text-2xl">👤</div>
+        <h3 class="text-lg font-semibold text-white">3. Plată la Ghișeu ANAF</h3>
+      </div>
+      <p class="text-gray-400 text-sm">Programează-te online, prezintă-te cu buletinul și confirmarea declarației, plătești cash sau cu cardul.</p>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold text-white mt-12 mb-6 flex items-center gap-3">
+    <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-crypto-red/20 text-xl">⏰</span>
+    Penalități de Întârziere
+  </h2>
+
+  <div class="glass rounded-xl p-6 mb-8">
+    <h4 class="text-lg font-semibold text-white mb-4">Ce se întâmplă dacă plătești târziu?</h4>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-gray-400 border-b border-white/10">
+            <th class="text-left py-2">Întârziere</th>
+            <th class="text-right py-2">Penalitate</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-300">
+          <tr class="border-b border-white/5">
+            <td class="py-2">1-30 zile</td>
+            <td class="text-right text-crypto-accent">5% din impozit (min 50 RON)</td>
+          </tr>
+          <tr class="border-b border-white/5">
+            <td class="py-2">31-60 zile</td>
+            <td class="text-right text-crypto-accent">10% din impozit (min 100 RON)</td>
+          </tr>
+          <tr class="border-b border-white/5">
+            <td class="py-2">61-90 zile</td>
+            <td class="text-right text-crypto-accent">15% din impozit (min 150 RON)</td>
+          </tr>
+          <tr>
+            <td class="py-2">Peste 90 zile</td>
+            <td class="text-right text-crypto-red">20% din impozit (min 200 RON)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-gray-400 text-sm mt-4">Plus dobândă de <strong class="text-white">0,02% pe zi</strong> (aproximativ 7,3% anual) pentru ne-plată.</p>
+  </div>
+
+  <h2 class="text-2xl font-bold text-white mt-12 mb-6 flex items-center gap-3">
+    <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-crypto-green/20 text-xl">✅</span>
+    Sfaturi Practice pentru Plată Fără Stres
+  </h2>
+
+  <div class="grid md:grid-cols-2 gap-6 mb-10">
+    <div class="glass rounded-xl p-6">
+      <h4 class="font-semibold text-crypto-green mb-3">✓ Fă aceste lucruri</h4>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li>• Pune-ți bani deoparte lunar (20% din profit)</li>
+        <li>• Documentează toate tranzacțiile</li>
+        <li>• Plătește cu câteva zile înainte de termen</li>
+        <li>• Verifică obligațiile în SPV</li>
+      </ul>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <h4 class="font-semibold text-crypto-red mb-3">✗ Evită aceste greșeli</h4>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li>• Nu aștepta ultima zi (24-25 mai)</li>
+        <li>• Nu plăti fără să verifici suma</li>
+        <li>• Nu ignora notificările ANAF</li>
+        <li>• Nu pierde dovada plății</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold text-white mt-12 mb-6 flex items-center gap-3">
+    <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-crypto-accent/20 text-xl">🔥</span>
+    Cazuri Speciale — FAQ
+  </h2>
+
+  <div class="space-y-4 mb-10">
+    <div class="glass rounded-xl p-6">
+      <h4 class="font-semibold text-white mb-2">Q: Pot plăti în rate?</h4>
+      <p class="text-gray-400 text-sm"><strong class="text-crypto-accent">A:</strong> Nu pentru impozitul pe investiții. Suma trebuie plătită integral până pe 25 mai 2027. Pentru sume mari poți solicita eșalonare, dar cu dobândă.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <h4 class="font-semibold text-white mb-2">Q: Ce fac dacă am plătit dar apare că mai am de plată?</h4>
+      <p class="text-gray-400 text-sm"><strong class="text-crypto-accent">A:</strong> Poate fi o întârziere de actualizare (2-3 zile lucrătoare). Dacă persistă, sună la ANAF: 031.403.91.60.</p>
+    </div>
+    <div class="glass rounded-xl p-6">
+      <h4 class="font-semibold text-white mb-2">Q: Pot deduce comisioanele exchange-ului?</h4>
+      <p class="text-gray-400 text-sm"><strong class="text-crypto-accent">A:</strong> Da! Comisioanele de tranzacționare sunt cheltuieli deductibile. Asigură-te că sunt documentate în exporturile CSV.</p>
+    </div>
+  </div>
+
+  <div class="glass-strong rounded-2xl p-8 border border-crypto-accent/30 bg-crypto-accent/5">
+    <h3 class="text-xl font-bold text-white mb-4 text-center">🧮 Calculează-ți Impozitul în 30 de Secunde</h3>
+    <p class="text-gray-400 text-center mb-6">Nu aștepta să vină mai 2027. Folosește calculatorul nostru gratuit:</p>
+    <div class="text-center">
+      <a href="/anaf/" class="btn-primary inline-flex items-center gap-2 rounded-xl px-8 py-4 font-semibold text-crypto-dark">
+        <span>👉</span> Deschide Calculatorul ANAF
+      </a>
+    </div>
+    <div class="flex justify-center gap-6 mt-6 text-sm text-gray-500">
+      <span>✓ Calcul automat FIFO</span>
+      <span>✓ Detectare prag CASS</span>
+      <span>✓ 100% gratuit</span>
+    </div>
+  </div>
+
+  <p class="text-gray-500 text-sm italic mt-8">
+    *Acest articol are scop informativ. Pentru situații fiscale complexe, consultă un contabil autorizat sau contactează ANAF direct.*
+  </p>
+</div>
+    `
+  },
   'metoda-fifo-calcul-profit-crypto-2026': {
     title: 'Metoda FIFO pentru Crypto: Cum Calculezi Corect Profitul la ANAF 2026',
     description: 'Învață cum funcționează metoda FIFO pentru calculul taxelor crypto în România. Exemple practice și sfaturi.',

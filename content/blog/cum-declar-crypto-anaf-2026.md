@@ -18,15 +18,15 @@ Dacă citești acest articol, probabil că ai realizat că trebuie să declari c
 
 ## Ce Impozite Plătești pe Crypto în România (2026)
 
-### 1. Impozitul pe Venit: 10%
+### 1. Impozitul pe Venit: 16%
 
-Orice profit realizat din tranzacții cu criptomonede este impozitat cu **10%**.
+Orice profit realizat din tranzacții cu criptomonede este impozitat cu **16%**.
 
 **Ce înseamnă profit realizat?**
 - Cumperi 1 BTC la 200.000 RON
 - Vinzi 1 BTC la 300.000 RON
 - Profit = 100.000 RON
-- Impozit = 10.000 RON (10%)
+- Impozit = 10.000 RON (16%)
 
 **Important:** Se taxează doar profitul, nu întreaga sumă.
 
@@ -39,7 +39,7 @@ Aici apare o nuanță importantă:
 
 **Exemple:**
 
-| Profit Anual | Impozit (10%) | CASS (10%) | Total de Plată |
+| Profit Anual | Impozit (16%) | CASS (10%) | Total de Plată |
 |--------------|---------------|------------|----------------|
 | 10.000 RON | 1.000 RON | 0 RON | **1.000 RON** |
 | 50.000 RON | 5.000 RON | 3.800 RON* | **8.800 RON** |
@@ -169,7 +169,7 @@ Declararea criptomonedelor la ANAF nu e complicată dacă știi pașii:
 
 1. **Calculează-ți profitul** (folosind metoda FIFO)
 2. **Completează Declarația Unică** până pe 25 mai 2027
-3. **Plătește impozitul** (10% + CASS dacă e cazul)
+3. **Plătește impozitul** (16% + CASS dacă e cazul)
 
 **Nu uita:** Cu cât te organizezi mai devreme, cu atât mai bine. Nu lăsa pe ultima sută de metri calculul taxelor - mai ales dacă ai multe tranzacții.
 

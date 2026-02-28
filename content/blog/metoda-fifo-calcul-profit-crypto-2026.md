@@ -81,8 +81,8 @@ FIFO continuă cu următoarele cumpărări:
 - **Profit Vânzare 2:** 50.000 RON
 - **PROFIT TOTAL:** **110.000 RON**
 
-**Impozit de plătit (10%):** 11.000 RON  
-**CASS (10% pe porțiunea >12.000 RON):** 9.800 RON  
+**Impozit de plătit (16%):** 11.000 RON  
+**CASS (10%) pe porțiunea >12.000 RON):** 9.800 RON  
 **TOTAL TAXE:** **20.800 RON**
 
 ---

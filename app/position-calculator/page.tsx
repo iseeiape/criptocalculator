@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { trackCalculatorUse } from '@/src/lib/gtag'
 
 export default function PositionCalculator() {
+  const [mounted, setMounted] = useState(false)
   const [accountBalance, setAccountBalance] = useState('')
   const [riskPercent, setRiskPercent] = useState('2')
   const [entryPrice, setEntryPrice] = useState('')
@@ -11,6 +13,12 @@ export default function PositionCalculator() {
   const [positionSize, setPositionSize] = useState(0)
   const [riskAmount, setRiskAmount] = useState(0)
   const [coinsToBuy, setCoinsToBuy] = useState(0)
+
+  useEffect(() => {
+    setMounted(true)
+    // Track calculator usage
+    trackCalculatorUse('position_calculator')
+  }, [])
 
   const calculatePosition = () => {
     const balance = parseFloat(accountBalance)
@@ -79,6 +87,12 @@ export default function PositionCalculator() {
       {/* Calculator Section */}
       <section className="relative px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
+          {!mounted ? (
+            <div className="glass border-gradient rounded-2xl p-8 text-center">
+              <div className="text-crypto-accent text-lg">⚡ Se încarcă calculatorul...</div>
+            </div>
+          ) : (
+            <>
           <div className="glass border-gradient rounded-2xl p-8">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-2">
@@ -240,6 +254,8 @@ export default function PositionCalculator() {
               </div>
             </div>
           </div>
+            </>
+          )}
         </div>
       </section>
 

@@ -12,6 +12,70 @@ interface BlogPost {
 export default function BlogPage() {
   const posts: BlogPost[] = [
     {
+      slug: '2026-02-28-cum-sa-citesti-grafice-analiza-tehnica-incepatori',
+      title: 'Cum să Citești Grafice Crypto: Analiză Tehnică pentru Începători - Ghid Complet 2026',
+      description: 'Învață să citești și interpretezi graficele de preț crypto. Ghid complet despre support, resistance, indicatori tehnici (RSI, MACD), lumânări japoneze și trenduri pentru începători.',
+      date: '28 Feb 2026',
+      tags: ['analiza tehnica crypto', 'grafice crypto', 'support resistance', 'indicatori tehnici', 'RSI', 'MACD', 'trading crypto romania'],
+      readTime: '25 min'
+    },
+    {
+      slug: '2026-02-27-risk-management-crypto-trading-protectia-capitalului',
+      title: 'Risk Management în Crypto Trading: Protecția Capitalului - Ghid Complet 2026',
+      description: 'Învață cum să îți protejezi fondurile în piața crypto volatile. Reguli de risk management, stop loss-uri, raport risc/recompensă și strategii pentru trading sustenabil.',
+      date: '27 Feb 2026',
+      tags: ['risk management crypto', 'stop loss', 'money management', 'trading discipline', 'protectie capital'],
+      readTime: '22 min'
+    },
+    {
+      slug: '2026-02-26-cum-sa-incepi-cu-bitcoin-2026-ghid-incepatori',
+      title: 'Cum să Începi cu Bitcoin în 2026: Ghid Complet pentru Începători',
+      description: 'Ghid pas cu pas pentru începători în Bitcoin 2026. Află cum cumperi primul tău Bitcoin, unde îl păstrezi în siguranță, strategii de investiții și cum plătești taxele în România.',
+      date: '26 Feb 2026',
+      tags: ['bitcoin incepatori', 'cum cumpar bitcoin', 'primii pasi crypto', 'ghid crypto 2026', 'investitii bitcoin romania'],
+      readTime: '18 min'
+    },
+    {
+      slug: '2026-02-24-cum-sa-iti-securizezi-criptomonedele-cold-vs-hot-wallet',
+      title: 'Cum să Îți Securizezi Criptomonedele: Cold vs Hot Wallet - Ghid Complet 2026',
+      description: 'Ghid complet despre securitatea criptomonedelor. Află diferențele dintre cold wallet și hot wallet, cum să îți protejezi fondurile și ce greșeli să eviți în 2026.',
+      date: '24 Feb 2026',
+      tags: ['securitate crypto', 'cold wallet', 'hot wallet', 'hardware wallet', 'seed phrase'],
+      readTime: '16 min'
+    },
+    {
+      slug: '2026-02-22-trading-crypto-romania-legal-ghid-complet',
+      title: 'Trading Crypto în România 2026: Ghid Legal Complet + Cum Plătești Taxele Corect',
+      description: 'Este legal trading-ul crypto în România? Ghid complet despre reglementări ANAF 2026, cum plătești taxe crypto, impozitul pe Bitcoin și cum să fii 100% compliant cu legea.',
+      date: '22 Feb 2026',
+      tags: ['trading legal', 'taxe crypto', 'ANAF', 'impozit bitcoin', 'reglementari'],
+      readTime: '22 min'
+    },
+    {
+      slug: '2026-02-21-cum-platesc-taxe-bitcoin-crypto-romania-ghid-2026',
+      title: 'Cum Plătești Taxele pe Bitcoin și Criptomonede în România: Ghid Complet 2026',
+      description: 'Ghid practic despre cum plătești taxele crypto în România. Metode de plată ANAF, termene-limită, penalități de întârziere și calcule concrete pentru impozitul pe Bitcoin și criptomonede în 2026.',
+      date: '21 Feb 2026',
+      tags: ['cum platesc taxe', 'taxe crypto', 'ANAF', 'impozit bitcoin', 'penalitati'],
+      readTime: '20 min'
+    },
+    {
+      slug: '2026-02-20-declaratie-unica-crypto-ghid-complet-anaf-2026',
+      title: 'Declarația Unică pentru Crypto: Ghid Complet ANAF 2026 + Pași Practic',
+      description: 'Cum completezi Declarația Unică pentru criptomonede în 2026. Ghid pas cu pas cu exemple concrete, formulare PDF și instrucțiuni pentru plata taxelor crypto la ANAF.',
+      date: '20 Feb 2026',
+      tags: ['declaratie unica', 'taxe crypto', 'ANAF', 'ghid practic', 'formular 212'],
+      readTime: '18 min'
+    },
+    {
+      slug: '2026-02-19-trading-crypto-romania-legal-ghid-plata-taxe',
+      title: 'Trading Crypto în România: Ghid Legal și Cum Plătești Taxele Corect',
+      description: 'Tot ce trebuie să știi despre legalitatea tradingului crypto în România și cum plătești taxele. Ghid complet cu pași practici pentru plata impozitelor ANAF pe Bitcoin și criptomonede în 2026.',
+      date: '19 Feb 2026',
+      tags: ['trading legal', 'taxe crypto', 'plata impozit', 'ANAF', 'ghid practic'],
+      readTime: '15 min'
+    },
+    {
       slug: 'metoda-fifo-calcul-profit-crypto-2026',
       title: 'Metoda FIFO pentru Crypto: Cum Calculezi Corect Profitul la ANAF 2026',
       description: 'Învață cum funcționează metoda FIFO pentru calculul taxelor crypto în România. Exemple practice, calcule pas cu pas și sfaturi pentru a plăti corect impozitul.',

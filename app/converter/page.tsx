@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { trackCalculatorUse } from '@/src/lib/gtag'
 
 interface Prices {
   [key: string]: number
@@ -23,6 +24,7 @@ const FIAT_RATES = {
 }
 
 export default function Converter() {
+  const [mounted, setMounted] = useState(false)
   const [amount, setAmount] = useState('1')
   const [fromCrypto, setFromCrypto] = useState('BTC')
   const [toFiat, setToFiat] = useState('RON')
@@ -31,6 +33,12 @@ export default function Converter() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [lastUpdate, setLastUpdate] = useState('')
+
+  useEffect(() => {
+    setMounted(true)
+    // Track calculator usage
+    trackCalculatorUse('crypto_converter')
+  }, [])
 
   useEffect(() => {
     const fetchPrices = async () => {
@@ -134,6 +142,12 @@ export default function Converter() {
 
       <section className="relative px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
+          {!mounted ? (
+            <div className="glass border-gradient rounded-2xl p-8 text-center">
+              <div className="text-crypto-accent text-lg">⚡ Se încarcă convertorul...</div>
+            </div>
+          ) : (
+            <>
           {error && (
             <div className="mb-6 rounded-xl bg-yellow-500/10 border border-yellow-500/30 p-4 text-yellow-200 text-center">
               ⚠️ {error}
@@ -236,6 +250,8 @@ export default function Converter() {
               ))}
             </div>
           </div>
+            </>
+          )}
         </div>
       </section>
 

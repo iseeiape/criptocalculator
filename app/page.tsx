@@ -158,8 +158,8 @@ export default function Home() {
                   Taxe ANAF 2026
                 </h3>
                 <p className="text-sm text-gray-400 leading-relaxed">
-                  Calculează taxele pentru cripto conform ANAF. 
-                  Metoda FIFO, impozit 10%, CASS. Fără panică!
+                  Calculează taxele pentru cripto conform ANAF 2026. 
+                  Metoda FIFO, impozit 16%, CASS. Fără panică!
                 </p>
                 <div className="mt-5 flex items-center gap-2 text-crypto-green text-sm font-medium">
                   <span>Calculează taxele</span>

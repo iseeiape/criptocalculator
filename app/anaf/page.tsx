@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { trackCalculatorUse } from '@/src/lib/gtag'
 
 interface Transaction {
   id: string
@@ -13,6 +14,7 @@ interface Transaction {
 }
 
 export default function ANAFCalculator() {
+  const [mounted, setMounted] = useState(false)
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [currentCrypto, setCurrentCrypto] = useState('BTC')
   const [currentAmount, setCurrentAmount] = useState('')
@@ -25,6 +27,12 @@ export default function ANAFCalculator() {
   const [taxAmount, setTaxAmount] = useState(0)
   const [healthTax, setHealthTax] = useState(0)
   const [totalTax, setTotalTax] = useState(0)
+
+  useEffect(() => {
+    setMounted(true)
+    // Track calculator usage
+    trackCalculatorUse('anaf_tax_calculator')
+  }, [])
 
   const addTransaction = () => {
     if (!currentAmount || !currentPrice || !currentDate) return
@@ -98,10 +106,10 @@ export default function ANAFCalculator() {
     setTotalProfit(profit)
     const taxable = Math.max(0, profit)
     setTaxableProfit(taxable)
-    const incomeTax = taxable * 0.10
+    const incomeTax = taxable * 0.16  // 16% impozit din 2026
     setTaxAmount(incomeTax)
     let cass = 0
-    if (taxable > 12000) cass = Math.min(taxable, 180000) * 0.10
+    if (taxable > 12000) cass = Math.min(taxable, 180000) * 0.10  // CASS 10% peste 12k
     setHealthTax(cass)
     setTotalTax(incomeTax + cass)
   }, [transactions])
@@ -143,12 +151,20 @@ export default function ANAFCalculator() {
             </h1>
             
             <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-400">
-              Calculează taxele pentru criptomonede conform ANAF. Metoda FIFO, impozit 10%, CASS.
+              Calculează taxele pentru criptomonede conform ANAF 2026. Metoda FIFO, impozit 16%, CASS 10%.
               Fără panică la taxe!
             </p>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-2">
+            {!mounted ? (
+              <div className="lg:col-span-2">
+                <div className="glass border-gradient rounded-2xl p-8 text-center">
+                  <div className="text-crypto-green text-lg">⚡ Se încarcă calculatorul...</div>
+                </div>
+              </div>
+            ) : (
+              <>
             {/* Left Column - Input */}
             <div className="space-y-6">
               <div className="glass border-gradient rounded-2xl p-8">
@@ -271,7 +287,7 @@ export default function ANAFCalculator() {
                     <div className="flex justify-between items-center mb-1">
                       <div>
                         <span className="text-gray-300">Impozit Venit</span>
-                        <p className="text-xs text-gray-500">10% din profit</p>
+                        <p className="text-xs text-gray-500">16% din profit (2026)</p>
                       </div>
                       <span className="text-xl font-bold text-crypto-accent">{formatRON(taxAmount)}</span>
                     </div>
@@ -308,7 +324,7 @@ export default function ANAFCalculator() {
                 <div className="space-y-3 text-sm">
                   <div className="flex gap-3">
                     <span className="text-crypto-accent">📌</span>
-                    <p className="text-gray-400"><strong className="text-white">Impozit:</strong> 10% din profit realizat (venituri din investiții, cat. I)</p>
+                    <p className="text-gray-400"><strong className="text-white">Impozit 2026:</strong> 16% din profit realizat (venituri din investiții, cat. I)</p>
                   </div>
                   
                   <div className="flex gap-3">
@@ -334,6 +350,8 @@ export default function ANAFCalculator() {
                 </div>
               </div>
             </div>
+              </>
+            )}
           </div>
         </div>
       </section>
